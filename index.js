@@ -149,7 +149,7 @@ class Action {
             
             console.log(`Status code: ${res.statusCode}: ${res.statusMessage}`)
 
-            if (res.statusCode == 404){
+            if (res.statusCode == 404 || res.statusCode == 301){
                 console.log(`No packages found. Pushing initial version...`)
                 this._pushPackage(this.version, this.packageName)
             } 
