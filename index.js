@@ -99,7 +99,7 @@ class Action {
 
         var pushCmd;
         if (this.sourceType == "GPR") {
-            pushCmd = `dotnet nuget push *.nupkg --api-key ${this.nugetKey}`
+            pushCmd = `dotnet nuget push *.nupkg --source ${this.sourceName} --api-key ${this.nugetKey}`
         } else {
             pushCmd = `dotnet nuget push *.nupkg -s ${(this.sourceName)} ${this.sourceType !== "GPR"? `-k ${this.nugetKey}`: ""} --skip-duplicate ${!this.includeSymbols ? "--no-symbols" : ""}`
         }
