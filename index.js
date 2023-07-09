@@ -101,7 +101,7 @@ class Action {
         if (this.sourceType == "GPR") {
             pushCmd = `dotnet nuget push *.nupkg --source ${this.sourceName} --api-key ${this.nugetKey}`
         } else {
-            pushCmd = `dotnet nuget push *.nupkg -s ${(this.sourceName)} ${this.sourceType !== "GPR"? `-k ${this.nugetKey}`: ""} --skip-duplicate ${!this.includeSymbols ? "--no-symbols" : ""}`
+            pushCmd = `dotnet nuget push *.nupkg --source ${(this.sourceName)} --api-key ${this.nugetKey} --skip-duplicate ${!this.includeSymbols ? "--no-symbols" : ""}`
         }
 
         const pushOutput = this._executeCommand(pushCmd, { encoding: "utf-8" }).stdout
